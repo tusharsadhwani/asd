@@ -4,7 +4,7 @@ Print stars on your CLI.
 
 ## Usage
 
-```sh
+```console
 > python stars.py 4
          *
         * *
@@ -21,7 +21,7 @@ Print stars on your CLI.
          *
 ```
 
-```sh
+```console
 > python stars.py --david 6
                *
               * *
@@ -46,6 +46,6 @@ Print stars on your CLI.
                *
 ```
 
-```sh
+```console
 > python stars.py --help
 ```
