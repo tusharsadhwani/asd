@@ -1,12 +1,10 @@
 import time
 
-from collections import deque
 from functools import wraps
 from threading import Timer
 
 
 def timed_cache(wrapped):
-    cache_queue = deque()
     functions = {}
 
     def remove_cache(function):
