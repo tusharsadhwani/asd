@@ -13,6 +13,7 @@ def timed_cache(wrapped):
         if functions.get(function):
             functions.pop(function)
 
+    @wraps(wrapped)
     def func(*args, **kwargs):
         if wrapped in functions:
             return functions[wrapped]
