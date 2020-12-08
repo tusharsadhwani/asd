@@ -14,9 +14,14 @@ def dots(text):
     yield text + '..'
     yield text + '...'
 
-if __name__ == "__main__":
+
+def main():
     while True:
         for text in dots('Please wait\nDTL is thonking'):
             clear()
             print(text, end='')
             sleep(.6)
+
+
+if __name__ == "__main__":
+    main()
