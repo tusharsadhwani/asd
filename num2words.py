@@ -18,7 +18,8 @@ def word_under_twenty(num: int) -> str:
         11: 'eleven',
         12: 'twelve',
         13: 'thirteen',
-        15: 'fifteen'
+        15: 'fifteen',
+        18: 'eighteen',
     }
     if num in words:
         return words[num]
@@ -100,7 +101,7 @@ print(num_to_word(0))
 print(num_to_word(1))
 print(num_to_word(5))
 print(num_to_word(10))
-print(num_to_word(15))
+print(num_to_word(18))
 print(num_to_word(30))
 print(num_to_word(79))
 print(num_to_word(100))
