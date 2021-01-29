@@ -85,6 +85,7 @@ def num_to_word(num: int) -> str:
         1_000_000_000_000: 'trillion',
         1_000_000_000_000_000: 'quadrillion',
         1_000_000_000_000_000_000: 'quintillion',
+        1_000_000_000_000_000_000_000: 'sextillion',
     }
 
     word = f'{word_under_thousand(starting_num)} {place_map[multiplier]}'
@@ -116,4 +117,5 @@ print(num_to_word(6900069))
 print(num_to_word(824763294))
 print(num_to_word(4198462836))
 print(num_to_word(69000000069))
-print(num_to_word(284974617461286412))
+print(num_to_word(284974000300086412))
+print(num_to_word(123456789876543212345678))
