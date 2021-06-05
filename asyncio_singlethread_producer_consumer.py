@@ -42,7 +42,7 @@ async def consumer() -> None:
 
 
 async def wait_for(data: int) -> int:
-    waiting_queue = Queue()
+    waiting_queue: Queue[int] = Queue()
 
     QUEUES[data] = waiting_queue
     print('trying to fetch')
