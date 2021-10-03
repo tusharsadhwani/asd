@@ -41,8 +41,6 @@ def zigzag(lines: int, limit: int) -> None:
         print(number, end="")
     print()
 
-    # ====================================
-
     for index in range(1, lines - 1):
         number = index + 1
         spaces = 2 * index
@@ -79,6 +77,3 @@ def zigzag(lines: int, limit: int) -> None:
         print(" " * spaces, end="")
         print(number, end="")
     print()
-
-
-zigzag(5, 45)
