@@ -144,7 +144,6 @@ def main() -> int:
     try:
         api = twitter_login()
         media = upload_image(api, image_data)
-        print("Media:", media)
         tweet(api, "Test tweet!", (media,))
     except TweepyException as exc:
         print("Error while tweeting:", *exc.args)
