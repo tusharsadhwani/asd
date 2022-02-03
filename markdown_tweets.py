@@ -9,7 +9,7 @@ from typing import Dict, Iterable, Optional
 import pytest
 import regex
 import tweepy
-from tweepy import Media
+from tweepy.models import Media, Status
 from tweepy.errors import TweepyException
 
 
@@ -87,6 +87,27 @@ def tweet(api: tweepy.API, text: str, media_ids: Iterable[Media] = ()) -> None:
         print("Unable to send tweet. Probably credentials don't have write access.")
         print("Error:", *exc.args)
         return
+
+
+def tweet_thread(
+    api: tweepy.API, tweets: Iterable[str], media_ids: Iterable[Iterable[Media]] = ()
+) -> Optional[Status]:
+    """Tweet out a thread (a sequence of tweets)."""
+
+    last_tweet = None
+    for idx, (tweet, medias) in enumerate(zip(tweets, media_ids)):
+        try:
+            last_tweet = api.update_status(
+                tweet,
+                in_reply_to_status_id=getattr(last_tweet, "id", None),
+                auto_populate_reply_metadata=True,
+                media_ids=medias,
+            )
+        except TweepyException as exc:
+            print(f"Unable to send tweet {idx}.")
+            print("Error:", *exc.args)
+            return last_tweet
+    return last_tweet
 
 
 def create_code_image(
