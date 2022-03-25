@@ -2,11 +2,11 @@
 import builtins
 import sys
 from contextlib import contextmanager
-from typing import Any, Generator, Optional
+from typing import Any, Iterator, Optional
 
 
 @contextmanager
-def pretty_prints() -> Generator[None, None, None]:
+def pretty_prints() -> Iterator[None]:
     """Wraps print with stars"""
     _print = builtins.print
 
