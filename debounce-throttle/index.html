@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Debounce and Throttle</title>
+  </head>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+  </style>
+  <body>
+    <h2>Debounce and Throttle</h2>
+    <input type="text" id="input" oninput="runUpdates(event)" />
+    <p>Regular: <output id="regular"></output></p>
+    <p>Debounce: <output id="debounce"></output></p>
+    <p>Throttle: <output id="throttle"></output></p>
+  </body>
+  <script>
+    const regularOutput = document.getElementById("regular");
+    const debounceOutput = document.getElementById("debounce");
+    const throttleOutput = document.getElementById("throttle");
+
+    const debounce = (callback, delay = 200) => {
+      let timeout;
+
+      return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => callback(args), delay);
+      };
+    };
+
+    const throttle = (callback, delay = 200) => {
+      let timedOut = true;
+
+      return (...args) => {
+        if (timedOut) {
+          callback(args);
+          timedOut = false;
+          setTimeout(() => (timedOut = true), delay);
+        }
+      };
+    };
+
+    const update = (text) => {
+      regularOutput.value = text;
+    };
+    const debouncedUpdate = debounce((text) => {
+      debounceOutput.value = text;
+    });
+    const throttledUpdate = throttle((text) => {
+      throttleOutput.value = text;
+    });
+
+    const runUpdates = (event) => {
+      const text = event.target.value;
+      update(text);
+      debouncedUpdate(text);
+      throttledUpdate(text);
+    };
+  </script>
+</html>
