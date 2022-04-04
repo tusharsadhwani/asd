@@ -33,13 +33,16 @@
     };
 
     const throttle = (callback, delay = 200) => {
-      let timedOut = true;
+      let timeout = null;
+      let callbackArgs = [];
 
       return (...args) => {
-        if (timedOut) {
-          callback(args);
-          timedOut = false;
-          setTimeout(() => (timedOut = true), delay);
+        callbackArgs = args;
+        if (timeout === null) {
+          timeout = setTimeout(() => {
+            callback(callbackArgs);
+            timeout = null;
+          }, delay);
         }
       };
     };
