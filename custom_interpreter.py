@@ -22,7 +22,7 @@ class CursedConsole(code.InteractiveConsole):
     def runsource(
         self,
         source: str,
-        filename: str = "<input>",
+        filename: str = "<console>",
         symbol: str = "single",
     ) -> bool:
         # First, check if it could be incomplete input, return True if it is.
@@ -34,8 +34,8 @@ class CursedConsole(code.InteractiveConsole):
         try:
             # In this block, you can do whatever you want.
             # Just make sure to create a code object at the end.
-            tree = ast.parse(source)
-            code_obj = compile(tree, filename, "exec")
+            tree = ast.parse(source, filename, mode=symbol)
+            code_obj = compile(tree, filename, mode=symbol)
         except (ValueError, SyntaxError):
             # Let the original implementation take care of incomplete input / errors
             return super().runsource(source, filename, symbol)
@@ -43,5 +43,11 @@ class CursedConsole(code.InteractiveConsole):
         self.runcode(code_obj)
         return False
 
+
+# For tab completion and arrow key support
+if sys.platform != "win32":
+    import readline
+
+    readline.parse_and_bind("tab: complete")
 
 CursedConsole().interact(banner=f"My Custom REPL, {sys.version}", exitmsg="")
