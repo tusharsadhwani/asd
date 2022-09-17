@@ -18,7 +18,7 @@ from contextlib import suppress
 import sys
 
 
-class CursedConsole(code.InteractiveConsole):
+class CustomConsole(code.InteractiveConsole):
     def runsource(
         self,
         source: str,
