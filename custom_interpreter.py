@@ -50,4 +50,4 @@ if sys.platform != "win32":
 
     readline.parse_and_bind("tab: complete")
 
-CursedConsole().interact(banner=f"My Custom REPL, {sys.version}", exitmsg="")
+CustomConsole().interact(banner=f"My Custom REPL, {sys.version}", exitmsg="")
