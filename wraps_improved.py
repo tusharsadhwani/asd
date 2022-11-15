@@ -2,7 +2,7 @@ import functools
 import types
 
 
-# Credit goes to https://github.com/asottile
+# Credit goes to https://github.com/Yelp/named_decorator
 # This is a better version of functools.wraps, which changes the code
 # object's `co_name` property as well, which helps differentiate between
 # all the decorated functions when looking at profiling data, etc.
