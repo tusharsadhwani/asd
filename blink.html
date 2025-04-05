@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blink</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .blink {
+      height: 500px;
+      background: linear-gradient(0deg, #f90 0%, #444 0);
+      animation: blinds 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes blinds {
+      to {
+        background-image: linear-gradient(0deg, #f90 100%, #444 0);
+      }
+    }
+  </style>
+  <body>
+    <div class="blink"></div>
+    <div class="blink"></div>
+    <div class="blink"></div>
+    <div class="blink"></div>
+  </body>
+</html>
