@@ -52,4 +52,16 @@ function draw() {
   line(image_x, 0, image_x, image_y);
   line(image_x, image_y, image_x - head_size * m, image_y - head_size * m);
   line(image_x, image_y, image_x + head_size * m, image_y - head_size * m);
+
+  // Red rays from object tip to mirror to image tip
+  stroke(255, 0, 0);
+  const R = width * 0.4;
+  // Ray 1: parallel to axis, hits arc at (sqrt(R²-y²), y), reflects to image
+  const mx1 = sqrt(R * R - arrow_size * arrow_size);
+  line(translated_x, -arrow_size, mx1, -arrow_size);
+  line(mx1, -arrow_size, image_x, image_y);
+  // Ray 2: through C (0,0), reflects back on itself (single straight line)
+  stroke(255, 0, 0, 80);
+  line(translated_x, -arrow_size, 0, 0);
+  line(0, 0, image_x, image_y);
 }
